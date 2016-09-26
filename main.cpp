@@ -1,21 +1,20 @@
 #include <iostream>
 #include "ponto.h"
+#include "poligono.h"
+#include "retangulo.h"
 
 using namespace std;
 
 int main()
 {
-    Ponto p;
-    p.setXY(2,2);
-    Ponto p1;
-    p1.setXY(3,3);
-    Ponto p2 = p.add(p1);
-    p2.imprime();
-    Ponto p3 = p2 + p1;
-    p3.imprime();
-    p3 = p3*2;
-    p3.imprime();
-    cout << p.norma() << endl;
-    p.translada(1,1);
-    p.imprime();
+    Retangulo r(0,0,3,4);
+    r.imprime();
+    cout<<endl<<"Area: "<<r.area()<<endl;
+
+    r.move(-3, 4);
+    cout<<"Nova area: "<<r.area()<<endl;
+
+
+    return 0;
+
 }

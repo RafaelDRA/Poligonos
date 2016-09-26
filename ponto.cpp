@@ -1,114 +1,72 @@
 #include "ponto.h"
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
+//construtor vazio
 Ponto::Ponto()
 {
     this->x = 0;
     this->y = 0;
 }
 
+//construtor com parametros de inicializacao x e y
 Ponto::Ponto(float x, float y)
 {
     this->x = x;
     this->y = y;
 }
 
+
+//modificador de atributo y
 void Ponto::setY(float y)
 {
     this->y = y;
 }
 
+//modificador de atributo x
+void Ponto::setX(float x)
+{
+    this->x = x;
+}
+
+//modificador de atributo x e y
 void Ponto::setXY(float x, float y)
 {
     this->x = x;
     this->y = y;
 }
 
+//retorna valor de x
 float Ponto::getX()
 {
     return this->x;
 }
 
+//retorna valor de y
 float Ponto::getY()
 {
     return this->y;
 }
 
-void Ponto::setX(float x)
-{
-    this->x = x;
-}
-
+//somador com parametro Ponto
 Ponto Ponto::add(Ponto P)
 {
+    //obs: testar outro
     Ponto ret;
-    ret.setX(this->getX()+P.getX());
-    ret.setY(this->getX()+P.getX());
-    return ret;
-}
-
-Ponto Ponto::operator+ (Ponto P)
-{
-    Ponto ret;
-    ret.x = this->x + P.x;
-    ret.y = this->y + P.y;
-    return ret;
-}
-
-Ponto Ponto::operator- (Ponto P)
-{
-    Ponto ret;
-    ret.x = this->x - P.x;
-    ret.y = this->y - P.y;
-    return ret;
-}
-
-Ponto Ponto::operator* (Ponto P)
-{
-    Ponto ret;
-    ret.x = this->x * P.x;
-    ret.y = this->y * P.y;
-    return ret;
-}
-
-Ponto Ponto::operator* (float n)
-{
-    Ponto ret;
-    ret.x = this->x * n;
-    ret.y = this->y * n;
-    return ret;
-}
-
-Ponto Ponto::operator/ (Ponto P)
-{
-    Ponto ret;
-    ret.x = this->x / P.x;
-    ret.y = this->y / P.y;
-    return ret;
-}
-
-void Ponto::operator=(Ponto &p)
-{
-    if (&p == this){
-        return;
-    }
-    if (this = nullptr){
-        this->x = p.x;
-        this->y = p.y;
-        this = new Ponto(x,y);
-        return;
-    }
+    ret.setX(this->getX()+P.getX()); // soma o atributo x do ponto definido com o x do parametro
+    ret.setY(this->getY()+P.getY());//Troquei x por y // soma o atributo y do ponto definido com o y do parametro
+    return ret; // retorna um ponto com a soma
 
 }
 
 Ponto Ponto::sub(Ponto P)
 {
     Ponto ret;
-    ret.x = this->x - P.x;
-    ret.y = this->y - P.y;
-    return ret;
+    ret.x = this->x - P.x; // subtrai o atributo x do ponto definido com o x do parametro
+    ret.y = this->y - P.y; // subtrai o atributo y do ponto definido com o y do parametro
+    return ret; // retorna um ponto com a subtracao
 }
 
 float Ponto::norma()
@@ -124,21 +82,5 @@ void Ponto::translada(float a, float b)
 
 void Ponto::imprime()
 {
-    cout << "(" << this->x << "," << this->y << ")" << endl;
-}
-
-Ponto operator*(float n, Ponto p)
-{
-    Ponto ret;
-    ret.x = p.x * n;
-    ret.y = p.y * n;
-    return ret;
-}
-
-Ponto operator/(float n, Ponto p)
-{
-    Ponto ret;
-    ret.x = p.x / n;
-    ret.y = p.y / n;
-    return ret;
+    cout << "(" << this->x << ", " << this->y << ")"; //tirei o ENDL
 }
